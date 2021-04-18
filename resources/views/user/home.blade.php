@@ -24,16 +24,32 @@
 {{--            เช็คว่าเป็นค่าว่างเปล่าไหม--}}
             @if(!$items->isEmpty())
                 @foreach($items as $item)
-                    <div class="col-md-3">
-                        <div class="card">
+                    <div class="col-md-3 mt-5">
+                        <div class="card" style="height: 800px">
 
-                            <img class="card-img-top img-fluid "  src="{{url('/uploads/'.$item->image)}}"  style="height: 300px; object-fit: cover;" >
+                            <img class="card-img-top img-fluid "  src="{{url('/uploads/'.$item->image)}}"  style="height: 500px; object-fit: cover;" >
                             <div class="card-body">
 
                                 <h5 class="card-title">{{$item->title}}</h5>
 {{--                                ชื่อ BD -> ชื่อ Colum--}}
                                 <p class="card-text">{{$item->detail}}</p>
-                                <button type="button" class="btn btn-primary" @click="addToCart({{$item->id}})">เพิ่มลงตระกร้า</button>
+                                <button type="button" class="btn btn-primary" @click="addToCart({{$item->id}})" style="position: absolute; bottom: 30px;">เพิ่มลงตระกร้า</button>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @elseif(!$items2->isEmpty())
+                @foreach($items2 as $item)
+                    <div class="col-md-3 mt-5">
+                        <div class="card" style="height: 800px">
+
+                            <img class="card-img-top img-fluid "  src="{{url('/uploads/'.$item->image)}}"  style="height: 500px; object-fit: cover;" >
+                            <div class="card-body">
+
+                                <h5 class="card-title">{{$item->title}}</h5>
+                                {{--                                ชื่อ BD -> ชื่อ Colum--}}
+                                <p class="card-text">{{$item->detail}}</p>
+                                <button type="button" class="btn btn-primary" @click="addToCart({{$item->id}})" style="position: absolute; bottom: 30px;">เพิ่มลงตระกร้า</button>
                             </div>
                         </div>
                     </div>

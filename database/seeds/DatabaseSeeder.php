@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         Admin::create([
             'name'=>'admin',
             'email'=>'admin@gmail.com',
-            'password'=> Hash::make('123456')
+            'password'=> Hash::make('1234')
         ]);
         // $this->call(UsersTableSeeder::class);
     }

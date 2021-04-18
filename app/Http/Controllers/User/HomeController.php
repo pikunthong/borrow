@@ -11,19 +11,23 @@ class HomeController extends Controller
 {
     //
     public function index(Request $request) {
-//        dd($request->get('search'));
+        //dd($request->get('search'));
 
         $items = Item::where('status',0);
-
+        $items2 = Item::where('status',0);
         if (!empty($request->get('search'))){
+
             $items->where('title','like','%'.$request->get('search').'%');
+            $items2->where('detail','like','%'.$request->get('search').'%');
 
         }
 
         $count_item_in_cart = Cart::where('user_id',auth()->user()->id)->count();
 //        หาจำนวน Db ของ Cart แล้ว count ว่ามีกี่ชิ้น
 
+
         $items = $items->get();
-        return view('user.home',compact('items','count_item_in_cart'));
+        $items2 = $items2->get();
+        return view('user.home',compact('items','count_item_in_cart','items2'));
     }
 }
